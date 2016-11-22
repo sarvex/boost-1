@@ -186,6 +186,11 @@ rule tag ( name : type ? : property-set )
     return [ boostcpp.tag $(name) : $(type) : $(property-set) ] ;
 }
 
+rule python-tag ( name : type ? : property-set )
+{
+    return [ boostcpp.python-tag $(name) : $(type) : $(property-set) ] ;
+}
+
 rule handle-static-runtime ( properties * )
 {
     # Using static runtime with shared libraries is impossible on Linux, and
@@ -295,6 +300,22 @@ rule boost-install ( libraries * )
         explicit install ;
     }
 }
+
+# Creates a library target, adding autolink support and also creates
+# stage and install targets via boost-install, above.
+rule boost-lib ( name : sources * : requirements * : default-build * : usage-requirements * )
+{
+    name = boost_$(name) ;
+    autolink = <link>shared:<define>BOOST_$(name:U)_DYN_LINK=1 ;
+    lib $(name)
+        : $(sources)
+        : $(requirements) $(autolink)
+        : $(default-build)
+        : $(usage-requirements) $(autolink)
+        ;
+    boost-install $(name) ;
+}
+
 
 headers =
     # The .SUNWCCh files are present in tr1 include directory and have to be
