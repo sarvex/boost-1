@@ -172,7 +172,7 @@
 	fetchRecurseSubmodules = on-demand
 [submodule "range"]
 	path = libs/range
-	url = https://github.com/think-cell/range.git
+	url = https://github.com/think-cell/boost_range.git
 	fetchRecurseSubmodules = on-demand
 [submodule "serialization"]
 	path = libs/serialization
