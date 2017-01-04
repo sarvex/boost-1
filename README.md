@@ -1,23 +1,16 @@
-# think-cell guide on how to submit boost patches
+# think-cell guide on how to submit boost patches (Work in progress)
 
 ## Clone and setup the boost repository 
 
-1. On the command line, do
+1. Consider cloning boost on a Mac, it takes a long time on Windows. On the command line, do
 
-        git clone --recursive https://github.com/think-cell/boost.git boost_thinkcell
-
-    In case this fails with an error "Fetched in submodule path ...", type 
-
-        cd boost_thinkcell
-	    git submodule update --recursive --remote
-
-    TODO: Checkout develop branch
+        git clone --recursive -b develop https://github.com/think-cell/boost.git boost_thinkcell
 
 2. Once the clone is complete, go to `boost_thinkcell/tools/build/` and execute `booststrap[.bat|.sh]`. This will build `b2`, the Boost.Build executable.
 
     For convenience, add the build folder to your path variable. On Windows, right-click the start menu button, choose Control Panel and then search for "environment variable" and choose "Edit environment variables for your account." On the Mac, enter 
 
-        echo export PATH=\$PATH:~/path_to/boost_thinkcell/tools/build >> ~/.bashrc
+        echo export PATH=\$PATH:/path_to/boost_thinkcell/tools/build >> ~/.bashrc
         source ~/.bashrc    
 
 3. On the Mac, please setup the boost documentation toolchain with the following commands: 
@@ -38,18 +31,15 @@ You can now compile boost, run its tests, and build its documentation. On the Ma
 
 	Edit `boost_thinkcell/.git/config` and change the remote URL to https://github.com/think-cell/library, then run 
 
-    git submodule sync
+    	git submodule sync
 
     Commit the changed `.gitmodules` file.
 
-2. Go to `libs/library_you_want_to_patch`
-
-    `git remote -v` should return the github.com/think-cell/library remote. 
-
-    (TODO: Make sure the develop branch is synced with github.com/boostorg/library
-        git submodule foreach git fetch
-        git submodule update
-    )
+2. Make your changes
+	
+	Go to `libs/library_you_want_to_patch`. 
+	
+	`git remote -v` should return the github.com/think-cell/library remote. 
 
     Create a branch of the `develop` branch for your bugfix, prefix the branch name with "thinkcell_". 
 
@@ -58,9 +48,17 @@ You can now compile boost, run its tests, and build its documentation. On the Ma
 
     Make your changes, commit them and push them to github.com. Consider adding tests/updating the documentation when your change is non-trivial. This may increase the chance of the fix getting merged. Otherwise, we have to maintain the patch indefinitely. 
     
+3. Open Pull Request
 
+	
 
+## Update develop branch from git
 
+Update all think-cell forked submodules
 
-    
+	cd libs/container; git checkout develop; git pull https://github.com/boostorg/container; git push;
+	cd libs/range; git checkout develop; git pull https://github.com/boostorg/range; git push;
+	cd libs/interprocess; git checkout develop; git pull https://github.com/boostorg/interprocess; git push;
 
+	git pull https://github.com/boostorg/boost develop
+	git push
