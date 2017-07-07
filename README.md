@@ -25,11 +25,11 @@ You can now compile boost, run its tests, and build its documentation. On the Ma
 
 1. Find out if we have forked the library already that you want to patch? 
 
-	Open `boost_thinkcell/.git/config` and look for the library. If its URL points to https://github.com/think-cell/library then you can proceed with the next step. Otherwise, we have to make a thinkcell fork of the library itself first. You need a github.com account for this and you have to be a member of the think-cell organization with fork privileges. 
+	Open `boost_thinkcell/.gitmodules` and look for the library. If its URL points to https://github.com/think-cell/library then you can proceed with the next step. Otherwise, we have to make a thinkcell fork of the library itself first. You need a github.com account for this and you have to be a member of the think-cell organization with fork privileges. 
 
 	Go to https://github.com/boostorg/library and click the fork button. Github asks you, if you want to fork with your personal github account or as think-cell, choose as think-cell. 
 
-	Edit `boost_thinkcell/.git/config` and change the remote URL to https://github.com/think-cell/library, then run 
+	Edit `boost_thinkcell/.gitmodules` and change the remote URL to https://github.com/think-cell/library, then run 
 
     	git submodule sync
 

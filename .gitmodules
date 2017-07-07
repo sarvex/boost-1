@@ -324,7 +324,7 @@
 	fetchRecurseSubmodules = on-demand
 [submodule "intrusive"]
 	path = libs/intrusive
-	url = https://github.com/boostorg/intrusive.git
+	url = https://github.com/think-cell/intrusive.git
 	fetchRecurseSubmodules = on-demand
 [submodule "coroutine"]
 	path = libs/coroutine
