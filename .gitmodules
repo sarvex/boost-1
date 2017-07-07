@@ -266,10 +266,6 @@
 	path = libs/xpressive
 	url = https://github.com/boostorg/xpressive.git
 	fetchRecurseSubmodules = on-demand
-[submodule "tr1"]
-	path = libs/tr1
-	url = https://github.com/boostorg/tr1.git
-	fetchRecurseSubmodules = on-demand
 [submodule "foreach"]
 	path = libs/foreach
 	url = https://github.com/boostorg/foreach.git
@@ -538,4 +534,12 @@
 	path = libs/process
 	url = https://github.com/boostorg/process.git
 	branch = develop
+	fetchRecurseSubmodules = on-demand
+[submodule "stacktrace"]
+	path = libs/stacktrace
+	url = ../stacktrace.git
+	fetchRecurseSubmodules = on-demand
+[submodule "poly_collection"]
+	path = libs/poly_collection
+	url = ../poly_collection.git
 	fetchRecurseSubmodules = on-demand
